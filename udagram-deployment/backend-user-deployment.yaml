@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-user
-        image: docker.io/hoanggianguet/udagram-api-user:v1
+        image: docker.io/hoanggianguet/udagram-api-user:v2
         ports:
         - containerPort: 80
         resources:

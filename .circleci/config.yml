@@ -1,0 +1,51 @@
+version: 2.1
+
+jobs:
+  lint-app:
+    docker:
+      - image: cimg/node:18.16.0
+    steps:
+      - checkout
+  build-docker:
+    machine:
+      image: ubuntu-2204:2023.04.2
+    steps:
+      - checkout
+      - run:
+          name: Build docker container
+          command: |
+            echo "--------- The images is Building ------------"
+
+            docker build -t udagram-api-feed ./udagram-api-feed
+            docker tag udagram-api-feed hoanggianguet/udagram-api-feed:v1
+
+            docker build -t udagram-api-user ./udagram-api-user
+            docker tag udagram-api-user hoanggianguet/udagram-api-user:v1
+            
+            docker build -t udagram-frontend ./udagram-frontend
+            docker tag udagram-frontend hoanggianguet/udagram-frontend:v1
+
+            docker build -t udagram-reverseproxy ./udagram-reverseproxy
+            docker tag udagram-reverseproxy hoanggianguet/udagram-reverseproxy:v1
+
+            echo "-------- All images built succesfully ----------"
+
+            echo " ------- Login dockerhub--------"
+
+            docker login -u hoanggianguet -p $DOCKERPASS
+
+            echo "----------- Push all images to dockerhub-------"
+
+            docker push hoanggianguet/udagram-api-feed:v1
+            docker push hoanggianguet/udagram-api-user:v1
+            docker push hoanggianguet/udagram-frontend:v1
+            docker push hoanggianguet/udagram-reverseproxy:v1
+
+workflows:
+  default:
+    jobs:
+      - lint-app
+      - build-docker:
+          requires: [lint-app]
+
+

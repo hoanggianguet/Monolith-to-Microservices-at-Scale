@@ -1,17 +1,3 @@
-// export const config = {
-//   'username': 'postgres',
-//   'password': '12345678',
-//   'database': 'postgres',
-//   'host': 'udagram.covyfxnxxf5m.us-east-1.rds.amazonaws.com',
-//   'dialect': 'postgres',
-//   'aws_region': 'us-east-1',
-//   'aws_profile': 'default',
-//   'aws_media_bucket': 'my-3773-6575-0155-bucket',
-//   'url': 'http://localhost:8100',
-//   'jwt': {
-//     'secret': 'testing',
-//   },
-// };
 export const config = {
   'username': process.env.POSTGRES_USERNAME,
   'password': process.env.POSTGRES_PASSWORD,
@@ -26,4 +12,3 @@ export const config = {
     'secret': process.env.JWT_SECRET,
   },
 };
-

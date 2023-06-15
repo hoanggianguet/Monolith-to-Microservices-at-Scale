@@ -15,7 +15,7 @@ spec:
         app: reverseproxy
     spec:
       containers:
-      - image: hoanggianguet/reverseproxy:v1
+      - image: hoanggianguet/udagram-reverseproxy:v1
         name: reverseproxy
         imagePullPolicy: Always          
         resources:

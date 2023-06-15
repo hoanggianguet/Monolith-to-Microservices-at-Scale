@@ -4,7 +4,7 @@ metadata:
   name: env-config
 data:
   POSTGRES_USERNAME: postgres
-  POSTGRES_PASSWORD: '12345678'
+  POSTGRES_PASSWORD: password
   POSTGRES_HOST: udagram.covyfxnxxf5m.us-east-1.rds.amazonaws.com
   POSTGRES_DB: postgres
   AWS_BUCKET: udacity-udagram-giangh2
